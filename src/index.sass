@@ -6,9 +6,34 @@
 body
     margin: 0
 
+ul
+    list-style-type: none
+    padding: 0
+
+li
+    margin-bottom: 5px
+
+.flex
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+
+.github-btn
+    margin-bottom: 20px
+
+.badge
+    margin-top: 10px !important
+    margin-right: 10px !important
+    padding: 5px 10px !important
+
 ::-webkit-scrollbar
     width: 10px
     background: transparent
 
 ::-webkit-scrollbar-thumb
     background: #007bff
+
+@media (max-width: 576px)
+    .flex
+        margin-bottom: 20px
