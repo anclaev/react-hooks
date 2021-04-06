@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Repos } from "../../components/Repos";
 import { GithubContext } from "../../context/Github";
 
 export const Profile = ({ match }) => {
@@ -105,6 +106,7 @@ export const Profile = ({ match }) => {
         {/* /.card-body */}
       </div>
       {/* /.card */}
+      <Repos repos={repos} />
     </>
   );
 };
