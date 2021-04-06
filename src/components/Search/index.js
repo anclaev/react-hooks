@@ -1,16 +1,17 @@
 import { useContext, useState } from "react";
 import { AlertContext } from "../../context/Alert";
+import { GithubContext } from "../../context/Github";
 
 export const Search = () => {
   const [val, setVal] = useState("");
-
   const { show } = useContext(AlertContext);
+  const github = useContext(GithubContext);
 
   const onSubmit = (e) => {
     if (e.key !== "Enter") return;
 
     if (val.trim()) {
-      console.log("Make request with: ", val);
+      github.search(val.trim());
     } else {
       show("Введите корректный ник.");
     }

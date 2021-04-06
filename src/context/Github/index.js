@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useReducer } from "react";
 import {
   CLEAR_USERS,
@@ -28,6 +29,9 @@ const handlers = {
   DEFAULT: (state) => state,
 };
 
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
+
 export const GithubContext = createContext();
 export const GithubReducer = (state, action) => {
   const handler = handlers[action.type] || handlers.DEFAULT;
@@ -40,8 +44,10 @@ export const GithubState = ({ children }) => {
 
   const search = async (value) => {
     setLoading();
-    // TODO: Axios Request
-    dispatch({ type: SEARCH_USERS, payload: [] });
+    const res = await axios.get(
+      `https://api.github.com/search/users?q=${value}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`
+    );
+    dispatch({ type: SEARCH_USERS, payload: res.data.items });
   };
 
   const getUser = async (name) => {
