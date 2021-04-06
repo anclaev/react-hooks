@@ -1,8 +1,14 @@
+import { Navbar } from "./components/Navbar";
+import { Home } from "./pages/Home";
+
 const App = () => {
   return (
-    <div className="container pt-4">
-      <h1>Hello World!</h1>
-    </div>
+    <>
+      <Navbar />
+      <div className="container pt-4">
+        <Home />
+      </div>
+    </>
   );
 };
 
