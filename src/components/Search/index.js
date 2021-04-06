@@ -4,16 +4,19 @@ import { GithubContext } from "../../context/Github";
 
 export const Search = () => {
   const [val, setVal] = useState("");
-  const { show } = useContext(AlertContext);
+  const alert = useContext(AlertContext);
   const github = useContext(GithubContext);
 
   const onSubmit = (e) => {
     if (e.key !== "Enter") return;
 
+    github.clearUsers();
+
     if (val.trim()) {
+      alert.hide();
       github.search(val.trim());
     } else {
-      show("Введите корректный ник.");
+      alert.show("Введите корректный ник.");
     }
   };
 
